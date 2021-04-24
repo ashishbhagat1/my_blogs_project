@@ -1,0 +1,18 @@
+
+{% extends "blogs/index.html" %}
+{% block content %}
+    {% for post in posts %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-3" href="#">{{ post.author }}</a>
+              <small class="text-white font-weight-bold">{{ post.published_at|date:"F d, Y" }}<span style="color:red">({{post.status}})</span></small>
+            </div>
+            <h4><a class="article-title" href="#" style="color:blue">{{ post.title }}</a></h4>
+            <p class="article-content">{{ post.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+    <h5>BLOG HOME PAGE OF MY NEW Template</h5>
+hello
+{% endblock content %}
