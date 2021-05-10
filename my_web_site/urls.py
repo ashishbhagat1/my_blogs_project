@@ -15,15 +15,23 @@ Including another URLconf
 """
 import debug_toolbar
 from django.contrib import admin
-from django.urls import path,include # include for blogs applictions
+from django.urls import path, include  # include for blogs applictions
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    #path('blog/',include('blogs.urls')), # this is in blogs/urls.py inculude from blogs appliction
-    path('',include('blogs.urls')), # show home page this is in blogs/urls.py inculude from blogs appliction
-    path('__debug__/', include(debug_toolbar.urls))#for debug tool
+    path("admin/", admin.site.urls),  # this is for superadmin page show for login
+    # path('blog/',include('blogs.urls')), # this is in blogs/urls.py inculude from blogs appliction
+    path("posts/", include("blogs.urls")),
+    # on localhost show First page this is in blogs/urls.py inculude from blogs appliction localhost:8000/posts
+    path("accounts/", include("accounts.urls")),
+    path("__debug__/", include(debug_toolbar.urls)),  # for debug tool
 ]
-#designing of Admin Pannel
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# designing of Admin Pannel
 admin.site.site_header = "Ashish Admin"
 admin.site.site_title = "Ashish Admin Portal"
 admin.site.index_title = "Welcome to Ashish Researcher Portal"

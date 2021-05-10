@@ -8,7 +8,7 @@
               <a class="mr-3" href="#">{{ post.author }}</a>
               <small class="text-white font-weight-bold">{{ post.published_at|date:"F d, Y" }}<span style="color:red">({{post.status}})</span></small>
             </div>
-            <h4><a class="article-title" href="#" style="color:blue">{{ post.title }}</a></h4>
+            <h4><a class="article-title" href="{% url 'post-detail' post.id %}" style="color:blue">{{ post.title }}</a></h4>
             <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
